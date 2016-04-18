@@ -1,6 +1,8 @@
 import Foundation;
 import XCTest;
 
+@testable import XCTestEngine
+
 public class XCTestEngineTest : XCTestCase {
 	public var allTests: [(String, () -> Void)] {
 		return [
@@ -8,7 +10,9 @@ public class XCTestEngineTest : XCTestCase {
 		]
 	}
 
+	private let testEngine = XCTestEngine()
+
 	func returnsNoTestsWhenNoTestCaseIsRegistered() {
-		XCTFail("Implement me!")
+		XCTAssert(testEngine.tests.isEmpty)
 	}
 }
