@@ -7,4 +7,4 @@ import SwiftTest
 import XCTest
 
 SwiftTestEngine.engine.add(XCTestRunnerTest())
-XCTMain(XCTestRunner.compileTests(SwiftTestEngine.engine))
+//XCTMain(XCTestRunner.compileTests(SwiftTestEngine.engine))

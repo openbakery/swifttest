@@ -5,13 +5,13 @@
 import Foundation
 
 public class SwiftTestEngine : TestEngine {
-    public static let engine = SwiftTestEngine()
+	public static let engine = SwiftTestEngine()
 
-    public init() {
+	public init() {
 
-    }
+	}
 
-    public func add(testCase: TestCase) {
+	public func add(testCase: TestCase) {
 
-    }
+	}
 }

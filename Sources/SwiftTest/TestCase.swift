@@ -5,6 +5,6 @@
 import Foundation
 
 public class TestCase {
-    public init() {
-    }
+	public init() {
+	}
 }
