@@ -12,6 +12,6 @@ let package = Package(
 				Target(name: "EngineApi", dependencies: []),
 				Target(name: "XCTestEngine", dependencies: ["EngineApi"]),
 				Target(name: "XCTestEngineTests", dependencies: ["XCTestEngine"]),
-				Target(name: "SwiftTestTests", dependencies: ["SwiftTest"])
+				Target(name: "SwiftTestTests", dependencies: ["SwiftTest", "XCTestEngineTests"])
 			]
 )
