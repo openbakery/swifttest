@@ -3,10 +3,15 @@ import XCTest;
 
 @testable import XCTestEngine
 
+private class TestCaseWithNoMethods : XCTestCase {
+	var allTests: [(String, () -> Void)] { return [] }
+}
+
 public class XCTestEngineTest : XCTestCase {
 	public var allTests: [(String, () -> Void)] {
 		return [
-			("returnsNoTestsWhenNoTestCaseIsRegistered", returnsNoTestsWhenNoTestCaseIsRegistered)
+			("returnsNoTestsWhenNoTestCaseIsRegistered", returnsNoTestsWhenNoTestCaseIsRegistered),
+			("returnsASingleTestDescriptorAfterAddingATestCase", returnsASingleTestDescriptorAfterAddingATestCase)
 		]
 	}
 
@@ -14,5 +19,11 @@ public class XCTestEngineTest : XCTestCase {
 
 	func returnsNoTestsWhenNoTestCaseIsRegistered() {
 		XCTAssert(testEngine.tests.isEmpty)
+	}
+
+	func returnsASingleTestDescriptorAfterAddingATestCase() {
+		testEngine.add(TestCaseWithNoMethods());
+
+		XCTAssert(testEngine.tests.count == 1)
 	}
 }
