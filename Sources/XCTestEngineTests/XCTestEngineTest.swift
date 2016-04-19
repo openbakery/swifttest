@@ -3,8 +3,8 @@ import XCTest;
 
 @testable import XCTestEngine
 
-private class TestCaseWithNoMethods : XCTestCase {
-	var allTests: [(String, () -> Void)] { return [] }
+public class TestCaseWithNoMethods : XCTestCase {
+	public var allTests: [(String, () -> Void)] { return [] }
 }
 
 public class XCTestEngineTest : XCTestCase {
@@ -24,6 +24,8 @@ public class XCTestEngineTest : XCTestCase {
 	func returnsASingleTestDescriptorAfterAddingATestCase() {
 		testEngine.add(TestCaseWithNoMethods());
 
-		XCTAssert(testEngine.tests.count == 1)
+		XCTAssertEqual(testEngine.tests.count, 1)
+		XCTAssertEqual(testEngine.tests[0].name, "TestCaseWithNoMethods")
 	}
+
 }
