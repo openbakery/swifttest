@@ -11,7 +11,7 @@ public class SwiftTestEngine : TestEngine {
 
 	}
 
-	public func add(testCase: TestCase) {
+	public func add(_ testCase: TestCase) {
 
 	}
 }

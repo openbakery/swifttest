@@ -8,10 +8,9 @@ public class XCTestEngine : TestEngine {
 		return _tests
 	}
 
-	public func add(testCase: XCTestCase) {
-		let testDescriptor = XCTestDescriptor(name: String(testCase.dynamicType))
+	public func add(_ testCase: XCTestCaseEntry) {
+		let testDescriptor = XCTestDescriptor(name: String(testCase.testCaseClass.dynamicType))
 		_tests.append(testDescriptor)
-
 		for test in testCase.allTests {
 			testDescriptor.addChild(XCTestDescriptor(name: test.0))
 		}

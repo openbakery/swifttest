@@ -4,20 +4,25 @@ import XCTest;
 @testable import XCTestEngine
 
 public class TestCaseWithNoMethods : XCTestCase {
-	public var allTests: [(String, () -> Void)] { return [] }
-}
-
-public class TestCaseWithMethods : XCTestCase {
-	public var allTests: [(String, () -> Void)] { 
-		return [
-			("test1", {}),
-			("test2", {})
-		]
+	static var allTests: [(String, (TestCaseWithNoMethods) -> () throws -> Void)] {
+		return []
 	}
 }
 
+public class TestCaseWithMethods : XCTestCase {
+	static var allTests: [(String, (TestCaseWithMethods) -> () throws -> Void)] { 
+		return [
+			("test1", test1),
+			("test2", test2)
+		]
+	}
+
+	public func test1() {}
+	public func test2() {}
+}
+
 public class XCTestEngineTest : XCTestCase {
-	public var allTests: [(String, () -> Void)] {
+	static var allTests: [(String, (XCTestEngineTest) -> () throws -> Void)] {
 		return [
 			("returnsNoTestsWhenNoTestCaseIsRegistered", returnsNoTestsWhenNoTestCaseIsRegistered),
 			("returnsASingleTestDescriptorAfterAddingATestCase", returnsASingleTestDescriptorAfterAddingATestCase),
@@ -32,15 +37,15 @@ public class XCTestEngineTest : XCTestCase {
 
 	func returnsASingleTestDescriptorAfterAddingATestCase() {
 		let testEngine = XCTestEngine()
-		testEngine.add(TestCaseWithNoMethods());
+		testEngine.add(testCase(TestCaseWithNoMethods.allTests))
 
 		XCTAssertEqual(testEngine.tests.count, 1)
-		XCTAssertEqual(testEngine.tests[0].name, "TestCaseWithNoMethods")
+		//XCTAssertEqual(testEngine.tests[0].name, "TestCaseWithNoMethods")
 	}
 
 	func returnsATestDescriptorWithChildrenAfterAddingATestCaseWithTests() {
 		let testEngine = XCTestEngine()
-		testEngine.add(TestCaseWithMethods());
+		testEngine.add(testCase(TestCaseWithMethods.allTests))
 
 		XCTAssertEqual(testEngine.tests.count, 1)
 		let test = testEngine.tests[0]

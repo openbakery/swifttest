@@ -10,4 +10,4 @@ import XCTest
 SwiftTestEngine.engine.add(XCTestRunnerTest())
 //XCTMain(XCTestRunner.compileTests(SwiftTestEngine.engine))
 
-XCTMain([XCTestEngineTest()])
+XCTMain([testCase(XCTestEngineTest.allTests)])

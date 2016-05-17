@@ -11,7 +11,7 @@ public class XCTestDescriptor : TestDescriptor {
 		self._name = name;
 	}
 
-	public func addChild(child: XCTestDescriptor) {
+	public func addChild(_ child: XCTestDescriptor) {
 		_children.append(child)
 	}
 }
