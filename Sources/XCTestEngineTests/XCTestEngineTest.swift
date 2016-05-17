@@ -1,5 +1,10 @@
-import Foundation;
-import XCTest;
+#if os(Linux) || os(FreeBSD)
+	import XCTest
+	import Foundation
+#else
+	import SwiftXCTest
+	import SwiftFoundation
+#endif
 
 @testable import XCTestEngine
 

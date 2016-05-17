@@ -2,7 +2,14 @@
 // Created by vagrant on 4/15/16.
 //
 
-import Foundation
+#if os(Linux) || os(FreeBSD)
+	import XCTest
+	import Foundation
+#else
+	import SwiftFoundation
+	import SwiftXCTest
+#endif
+
 import SwiftTest
 
 class XCTestRunnerTest : TestCase {

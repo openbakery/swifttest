@@ -2,7 +2,12 @@
 // Created by vagrant on 4/15/16.
 //
 
-import Foundation
+
+#if os(Linux) || os(FreeBSD)
+	import Foundation
+#else
+	import SwiftFoundation
+#endif
 
 public class SwiftTestEngine : TestEngine {
 	public static let engine = SwiftTestEngine()

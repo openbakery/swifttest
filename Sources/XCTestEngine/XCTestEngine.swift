@@ -1,6 +1,12 @@
-import Foundation
 import EngineApi
-import XCTest
+#if os(Linux) || os(FreeBSD)
+	import XCTest
+	import Foundation
+#else
+	import SwiftFoundation
+	import SwiftXCTest
+#endif
+
 
 public class XCTestEngine : TestEngine {
 	private var _tests: [TestDescriptor] = []

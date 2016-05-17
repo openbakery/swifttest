@@ -2,8 +2,14 @@
 // Created by vagrant on 4/15/16.
 //
 
-import Foundation
-import XCTest
+
+#if os(Linux) || os(FreeBSD)
+	import Foundation
+	import XCTest
+#else
+	import SwiftFoundation
+	import SwiftXCTest
+#endif
 
 public typealias XCTestCaseEntry = (String, () -> Void)
 

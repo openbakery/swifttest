@@ -2,10 +2,17 @@
 // Created by vagrant on 4/15/16.
 //
 
-import Foundation
+
+#if os(Linux) || os(FreeBSD)
+	import XCTest
+	import Foundation
+#else
+	import SwiftFoundation
+	import SwiftXCTest
+#endif
+
 import SwiftTest
 @testable import XCTestEngineTests
-import XCTest
 
 SwiftTestEngine.engine.add(XCTestRunnerTest())
 //XCTMain(XCTestRunner.compileTests(SwiftTestEngine.engine))
